@@ -332,6 +332,7 @@ def _sha256_text(value: str) -> str:
 
 
 def _read_json(path: Path) -> dict[str, object]:
+    """Read a JSON object from a UTF-8 file with an optional BOM."""
     payload = load_json(path)
     if not isinstance(payload, dict):
         raise RuntimeError(f"Expected JSON object: {path}")

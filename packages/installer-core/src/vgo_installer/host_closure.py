@@ -31,6 +31,7 @@ def _write_json_file(path: Path, data: dict[str, Any]) -> None:
 
 
 def _load_json_object(path: Path) -> dict[str, Any]:
+    """Read settings as a JSON object, returning an empty object if the file is absent."""
     if not path.exists():
         return {}
     try:
@@ -109,6 +110,7 @@ def is_owned_legacy_opencode_vibeskills_node(node: object, target_root: Path) ->
 
 
 def sanitize_legacy_opencode_config(target_root: Path) -> dict[str, object]:
+    """Remove legacy VibeSkills settings from OpenCode config and report the result."""
     settings_path = target_root / "opencode.json"
     receipt: dict[str, object] = {
         "path": str(settings_path.resolve()),

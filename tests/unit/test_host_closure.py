@@ -16,6 +16,7 @@ from vgo_installer.host_closure import (
 
 
 def test_install_claude_managed_settings_reads_utf8_bom_settings(tmp_path: Path) -> None:
+    """Preserve existing Claude settings when adding managed settings to a BOM-prefixed file."""
     target_root = tmp_path / ".claude"
     target_root.mkdir()
     settings_path = target_root / "settings.json"
@@ -36,6 +37,7 @@ def test_install_claude_managed_settings_reads_utf8_bom_settings(tmp_path: Path)
 
 
 def test_sanitize_legacy_opencode_config_reads_utf8_bom_settings(tmp_path: Path) -> None:
+    """Delete a BOM-prefixed OpenCode config left empty after managed settings are removed."""
     settings_path = tmp_path / "opencode.json"
     settings_path.write_bytes(b"\xef\xbb\xbf" + b'{"vibeskills": {"managed": true}}\n')
 

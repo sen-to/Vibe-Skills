@@ -616,6 +616,7 @@ def test_check_reports_drift_when_receipt_owned_file_changes(tmp_path: Path) -> 
 
 
 def test_check_accepts_utf8_bom_install_receipt(tmp_path: Path) -> None:
+    """Accept a valid install receipt with a leading UTF-8 BOM."""
     repo_root = tmp_path / "repo"
     skills_dir = tmp_path / "skills"
     _write(repo_root / "SKILL.md", "# vibe\n")
